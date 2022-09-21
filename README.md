@@ -1,9 +1,11 @@
 # sms_sender
-This little project can send sms message to your phone number
+This little project can send sms message to your phone number.
+```
 
 Instruction:
-1. Clone and create a virtual environment
-    git clone
+
+1. Clone and create a virtual environment:
+    git clone git@github.com:MaidariTs/sms_sender.git
     python -m venv venv
     source venv/Scripts/activate
 
