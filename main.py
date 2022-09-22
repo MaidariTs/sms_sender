@@ -1,24 +1,20 @@
-from twilio.rest import Client
 from dotenv import load_dotenv
+import requests
 import os
 
 
 load_dotenv()
 
 
-def sending_sms(text, receiver):
+URL = 'https://sms.ru/sms/send?api_id={}&to={}&msg={}&json=1'
+
+
+def sending_sms(text, receiver, api_id):
 
     try:
-        account_sid = os.getenv('SID')
-        auth_token = os.getenv('AUTH_TOKEN')
 
-        client = Client(account_sid, auth_token)
-
-        client.messages.create(
-            body=text,
-            from_=os.getenv('SENDER_PHONE'),
-            to=receiver
-        )
+        response = requests.get(URL.format(api_id, receiver, text))
+        response = response.json()
         return 'The message was successfully sent'
 
     except Exception as ex:
@@ -27,7 +23,13 @@ def sending_sms(text, receiver):
 
 def main():
     text = input('Please enter your message: ')
-    print(sending_sms(text=text, receiver=os.getenv('RECEIVER_PHONE')))
+    text = str(text).split()
+    text = '+'.join(text)
+    print(sending_sms(
+        text=text,
+        receiver=os.getenv('RECEIVER_PHONE'),
+        api_id=os.getenv('API_ID')
+        ))
 
 
 if __name__ == '__main__':

@@ -9,15 +9,13 @@ Instruction:
     python -m venv venv
     source venv/Scripts/activate
 
-2. Install Requirements:
+2. Install requirements:
     pip install -r requirements.txt
 
-3. Register on the site 'https://www.twilio.com/'
+3. Register on the site 'https://www.sms.ru/', where u can get an API_ID
 
 4. Create an '.env' file in the project directory and enter your data in it:
-    SID = ''
-    AUTH_TOKEN = ''
-    SENDER_PHONE = ''
     RECEIVER_PHONE = ''
+    API_ID = ''
 
 5. It`s all
